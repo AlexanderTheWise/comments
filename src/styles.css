@@ -21,11 +21,11 @@
 body {
   background: var(--primary-back);
   font-family: "Rubik", sans-serif;
-  line-height: 1.5;
 }
 
-ul[role="list"],
-ol[role="list"] {
+ul,
+ol,
+li {
   list-style: none;
 }
 
@@ -33,5 +33,17 @@ input,
 button,
 textarea,
 select {
+  cursor: pointer;
+  border: none;
   font: inherit;
+  background: transparent;
+}
+
+/* Utilities */
+.flex {
+  display: flex;
+}
+
+.itm-center {
+  align-items: center;
 }
