@@ -1,0 +1,37 @@
+<div class="comment">
+  <article class="parent-comment">
+    <div class="parent-comment__info flex itm-center">
+      <img [src]="comment.user.image.webp" width="32" height="32" />
+      <span class="parent-comment__user">{{comment.user.username}}</span>
+      <span>{{comment.createdAt}}</span>
+    </div>
+
+
+    <p>
+      {{comment.content}}
+    </p>
+
+    <article class="parent-comment__vote">
+      <button>
+        <generic-icon [iconType]="'plus'"></generic-icon>
+      </button>
+
+      <span>{{comment.score}}</span>
+
+      <button>
+        <generic-icon [iconType]="'minus'"></generic-icon>
+      </button>
+    </article>
+
+    <article class="parent-comment__reply">
+      <button class="flex itm-center">
+        <generic-icon [iconType]="'reply'"></generic-icon>
+        <span>Reply</span>
+      </button>
+    </article>
+  </article>
+
+  <ul class="replies">
+    <comments [comments]="comment.replies"></comments>
+  </ul>
+</div>
