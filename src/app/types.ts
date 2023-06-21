@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   image: {
     png: string;
     webp: string;
@@ -9,14 +9,14 @@ interface User {
 export interface Comment {
   id: number;
   content: string;
-  createdAt: string;
+  createdAt: Date;
   score: number;
   user: User;
   replies: Comments;
+  replyingTo?: string;
 }
 
 export interface CommentsState {
-  currentUser: User;
   comments: Comments;
 }
 
