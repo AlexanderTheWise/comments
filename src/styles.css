@@ -39,6 +39,10 @@ select {
   background: transparent;
 }
 
+::-webkit-resizer {
+  display: none;
+}
+
 /* Utilities */
 .flex {
   display: flex;
@@ -46,4 +50,40 @@ select {
 
 .itm-center {
   align-items: center;
+}
+
+.h-96 {
+  height: 96px;
+}
+
+.cont-center {
+  justify-content: center;
+}
+
+.comment-input {
+  border: 2px solid #e9ebf0;
+  border-radius: 8px;
+  padding: 12px 24px;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.comment-input:focus {
+  border-color: var(--pr-btn-col);
+}
+
+.pr-btn {
+  width: 104px;
+  height: 48px;
+  border-radius: 8px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: var(--pr-btn-col);
+  transition: background 0.28s ease;
+}
+
+.pr-btn:hover {
+  background: var(--pale-pr-btn-col);
 }

@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { Comments } from './types';
-import commentState from 'src/data';
+import { CommentsService } from './services/comments.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: [
-    '.app { display: flex; flex-direction: row; justify-content: center;padding: 0 16px;}',
-  ],
+  styles: ['.app { padding: 0 16px;}'],
 })
 export class AppComponent {
   comments: Comments;
 
-  constructor() {
-    this.comments = commentState.comments;
+  constructor(commentService: CommentsService) {
+    this.comments = commentService.comments;
   }
 }
