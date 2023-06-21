@@ -1,17 +1,27 @@
-.parent-comment {
+.comment-box {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: min-content 1fr min-content;
-  row-gap: 16px;
   padding: 16px;
   background: white;
-  color: var(--pr-text-col);
   border-radius: 8px;
 }
 
+.parent-comment {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content 1fr min-content;
+  row-gap: 16px;
+  color: var(--pr-text-col);
+}
+
 .parent-comment__vote,
-.parent-comment__reply {
+.parent-comment__actions {
   align-self: center;
+}
+
+.parent-comment > button {
+  color: white;
+  background: var(--pr-btn-col);
+  grid-column: 2;
+  justify-self: flex-end;
 }
 
 .parent-comment article:last-child {
@@ -39,8 +49,14 @@
 }
 
 .parent-comment__info,
-.parent-comment p {
+.parent-comment p,
+.parent-comment textarea {
   grid-column: 1 / 3;
+}
+
+.parent-comment__replyingTo {
+  font-weight: 500;
+  color: var(--pr-btn-col);
 }
 
 .parent-comment__info {
@@ -56,13 +72,33 @@
   line-height: 24px;
 }
 
-.parent-comment__reply button {
+.parent-comment__actions {
+  justify-content: flex-end;
+  gap: 16px;
+  font-weight: 500;
+}
+
+.gap-8 {
   gap: 8px;
 }
 
-.parent-comment__reply span {
-  font-weight: 500;
+.parent-comment__btn-blue button {
   color: var(--pr-btn-col);
+}
+
+.parent-comment__delete button {
+  color: var(--delete);
+}
+
+.parent-comment__actions button:hover {
+  opacity: 0.6;
+}
+
+.parent-comment__you {
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: white;
+  background: var(--pr-btn-col);
 }
 
 .replies {
@@ -72,6 +108,10 @@
 }
 
 @media (min-width: 730px) {
+  .comment-box {
+    padding: 24px;
+  }
+
   .parent-comment {
     gap: 0;
     padding: 24px;
@@ -79,13 +119,19 @@
     grid-template-rows: min-content 1fr;
   }
 
-  .parent-comment p {
+  .parent-comment p,
+  .parent-comment textarea {
     margin-top: 16px;
     grid-column: 2 / 4;
   }
 
   .parent-comment__info {
     grid-column: 2;
+  }
+
+  .parent-comment > button {
+    grid-column: 3;
+    margin-top: 16px;
   }
 
   .parent-comment__vote {
@@ -98,7 +144,7 @@
     gap: 22px;
   }
 
-  .parent-comment__reply {
+  .parent-comment__actions {
     grid-row: 1;
     grid-column: 3;
   }
