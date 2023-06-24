@@ -1,3 +1,9 @@
+export enum VotedState {
+  UpVoted,
+  DownVoted,
+  Unvoted,
+}
+
 export interface User {
   image: {
     png: string;
@@ -9,7 +15,8 @@ export interface User {
 export interface Comment {
   id: number;
   content: string;
-  createdAt: Date;
+  createdAt: string;
+  voted: VotedState;
   score: number;
   user: User;
   replies: Comments;

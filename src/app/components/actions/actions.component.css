@@ -1,0 +1,9 @@
+.actions {
+  justify-content: flex-end;
+  gap: 16px;
+  font-weight: 500;
+}
+
+.actions button:hover {
+  opacity: 0.6;
+}

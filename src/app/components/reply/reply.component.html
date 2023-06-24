@@ -1,5 +1,7 @@
 <article class="reply comment-box">
   <textarea [(ngModel)]="content" class="comment-input h-96" placeholder="Add a comment..." adjustSize></textarea>
   <img [src]="currentUser.image.webp" width="32" height="32" />
-  <button class="pr-btn reply__btn" (click)="onReply()">Reply</button>
+  <button class="pr-btn reply__btn" (click)="onReply()">
+    <ng-content></ng-content>
+  </button>
 </article>
