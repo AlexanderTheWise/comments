@@ -1,5 +1,5 @@
 <article class="header flex itm-center">
-  <img [src]="comment.user.image.webp" width="32" height="32" />
+  <img [src]="comment.user.image.webp" [alt]="comment.user.username" width="32" height="32" />
   <span class="header__user">{{comment.user.username}}</span>
   <span class="header__you" *ngIf="isYours">you</span>
   <span>{{postedTime}} ago</span>
