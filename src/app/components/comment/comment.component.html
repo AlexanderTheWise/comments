@@ -31,6 +31,8 @@
   </reply>
 
   <ul class="replies">
-    <comments [parentComment]="comment" [comments]="comment.replies"></comments>
+    <li *ngFor="let reply of comment.replies">
+      <comment [comment]="reply" [parentComment]="comment"></comment>
+    </li>
   </ul>
 </div>

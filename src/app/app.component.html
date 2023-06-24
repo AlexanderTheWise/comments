@@ -1,11 +1,13 @@
-<div class="app flex cont-center">
+<main class="app flex cont-center">
   <div class="comment-size">
     <ul>
-      <comments [comments]="comments"></comments>
+      <li *ngFor="let comment of comments">
+        <comment [comment]="comment"></comment>
+      </li>
     </ul>
 
     <reply>
       Send
     </reply>
   </div>
-</div>
+</main>
