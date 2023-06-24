@@ -87,3 +87,11 @@ select {
 .pr-btn:hover {
   background: var(--pale-pr-btn-col);
 }
+
+.blue-btn {
+  color: var(--pr-btn-col);
+}
+
+.delete-btn {
+  color: var(--delete);
+}

@@ -1,0 +1,22 @@
+<article class="actions flex itm-center">
+  <article *ngIf="isYours">
+    <button class="flex itm-center gap-8 delete-btn" (click)="onOpenModal()">
+      <generic-icon [iconType]="'delete'"></generic-icon>
+      <span>Delete</span>
+    </button>
+  </article>
+
+  <article *ngIf="!isYours">
+    <button class="flex itm-center gap-8 blue-btn" (click)="onReplyOpen()">
+      <generic-icon [iconType]="'reply'"></generic-icon>
+      <span>Reply</span>
+    </button>
+  </article>
+
+  <article *ngIf="isYours">
+    <button class="flex itm-center gap-8 blue-btn" (click)="onToggleEditing()">
+      <generic-icon [iconType]="'edit'"></generic-icon>
+      <span>Edit</span>
+    </button>
+  </article>
+</article>

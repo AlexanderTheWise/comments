@@ -1,0 +1,64 @@
+.modal-delete {
+  position: fixed;
+  border: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100vw - 16px);
+  padding: 24px 27px;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 8px;
+}
+
+.modal-delete::backdrop {
+  background: rgba(128, 128, 128, 0.5);
+}
+
+.modal-delete > h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.modal-delete > p {
+  line-height: 24px;
+  color: var(--pr-text-col);
+}
+
+.modal-delete div {
+  gap: 12px;
+}
+
+.modal-delete button {
+  flex: 1;
+  padding: 12px 0;
+  text-transform: uppercase;
+  color: white;
+  outline: none;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.28s ease;
+}
+
+.modal-delete button:first-child {
+  background: var(--pr-text-col);
+}
+
+.modal-delete button:last-child {
+  background: var(--delete);
+}
+
+.modal-delete button:first-child:hover {
+  opacity: 0.5;
+}
+
+.modal-delete button:last-child:hover {
+  background: var(--pale-delete);
+}
+
+@media (min-width: 455px) {
+  .modal-delete {
+    width: initial;
+    max-width: 400px;
+  }
+}

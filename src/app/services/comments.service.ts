@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Comment } from '../types';
+import { Comment, Comments } from '../types';
 import { currentUser, comments } from 'src/data';
 
 @Injectable({
@@ -7,7 +7,13 @@ import { currentUser, comments } from 'src/data';
 })
 export class CommentsService {
   currentUser = currentUser;
-  comments = comments;
+  storageName = 'comments';
+  comments: Comments;
+
+  constructor() {
+    this.comments =
+      JSON.parse(localStorage.getItem(this.storageName)!) || comments;
+  }
 
   deleteComment(parentComment: Comment, id: number) {
     if (parentComment) {
@@ -15,6 +21,7 @@ export class CommentsService {
         (reply) => reply.id !== id
       );
 
+      this.updateStorage();
       return;
     }
 
@@ -22,19 +29,39 @@ export class CommentsService {
       this.comments.findIndex((comment) => comment.id === id),
       1
     );
+
+    this.updateStorage();
   }
 
   addComment(parentComment: Comment, comment: Comment) {
     if (parentComment) {
       parentComment.replies.unshift(comment);
 
+      this.updateStorage();
       return;
     }
 
-    this.comments.unshift(comment);
+    this.comments.push(comment);
+    this.updateStorage();
   }
 
-  updateComment(comment: Comment, content: string) {
+  updateContent(comment: Comment, content: string) {
     comment.content = content;
+    this.updateStorage();
+  }
+
+  increaseScore(comment: Comment) {
+    comment.score++;
+    this.updateStorage();
+  }
+
+  decreaseScore(comment: Comment) {
+    comment.score--;
+    this.updateStorage();
+  }
+
+  private updateStorage() {
+    debugger;
+    localStorage.setItem(this.storageName, JSON.stringify(this.comments));
   }
 }

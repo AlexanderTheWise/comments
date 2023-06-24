@@ -1,6 +1,6 @@
-const getPostedTime = (previousDate: Date): string => {
+const getPostedTime = (previousDate: string): string => {
   const seconds = Math.floor(
-    (new Date().getTime() - previousDate.getTime()) / 1000
+    (new Date().getTime() - new Date(previousDate).getTime()) / 1000
   );
 
   const minute = 60;

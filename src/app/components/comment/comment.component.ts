@@ -13,6 +13,7 @@ export class CommentComponent implements OnInit {
   @Input() parentComment: Comment;
   @Input() comment: Comment;
   contentEditable: string;
+  modalOpen = false;
   editing = false;
   replyVisible = false;
   currentUser: User;
@@ -25,10 +26,6 @@ export class CommentComponent implements OnInit {
     this.contentEditable = `@${this.comment.replyingTo}, ${this.comment.content}`;
   }
 
-  get postedTime() {
-    return getPostedTime(this.comment.createdAt);
-  }
-
   get isYours() {
     return this.currentUser.username === this.comment.user.username;
   }
@@ -37,13 +34,13 @@ export class CommentComponent implements OnInit {
     this.commentService.deleteComment(this.parentComment, this.comment.id);
   }
 
-  updateComment() {
+  updateContent() {
     const contentWithoutUser = this.contentEditable.replace(
       `@${this.comment.replyingTo},`,
       ''
     );
 
-    this.commentService.updateComment(this.comment, contentWithoutUser);
+    this.commentService.updateContent(this.comment, contentWithoutUser);
     this.editing = false;
   }
 
@@ -51,8 +48,16 @@ export class CommentComponent implements OnInit {
     this.replyVisible = true;
   }
 
+  openModal() {
+    this.modalOpen = true;
+  }
+
   closeReply() {
     this.replyVisible = false;
+  }
+
+  closeModal() {
+    this.modalOpen = false;
   }
 
   toggleEditing() {

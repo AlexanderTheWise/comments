@@ -1,0 +1,11 @@
+<article class="flex votes">
+  <button [disabled]="isYours" (click)="increaseScore()">
+    <generic-icon [iconType]="'plus'"></generic-icon>
+  </button>
+
+  <span>{{comment.score}}</span>
+
+  <button [disabled]="isYours" (click)="decreaseScore()">
+    <generic-icon [iconType]="'minus'"></generic-icon>
+  </button>
+</article>

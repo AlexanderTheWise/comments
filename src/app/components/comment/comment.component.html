@@ -1,14 +1,9 @@
 <div class="comment">
   <article class="parent-comment comment-box">
-    <div class="parent-comment__info flex itm-center">
-      <img [src]="comment.user.image.webp" width="32" height="32" />
-      <span class="parent-comment__user">{{comment.user.username}}</span>
-      <span class="parent-comment__you" *ngIf="isYours">you</span>
-      <span>{{postedTime}} ago</span>
-    </div>
+    <header [comment]="comment" [isYours]="isYours" class="parent-comment__header"></header>
 
 
-    <p *ngIf="!(editing && isYours); else textarea">
+    <p *ngIf="!(editing && isYours); else textarea" class="parent-comment__content">
       <span class="parent-comment__replyingTo">{{ comment.replyingTo ? "@" + comment.replyingTo : ""}}</span>
       {{comment.content}}
     </p>
@@ -17,48 +12,23 @@
       <textarea class="comment-input h-96" placeholder="Update the comment..." adjustSize [(ngModel)]="contentEditable">
       </textarea>
 
-      <button class="pr-btn" (click)="updateComment()">
+      <button class="pr-btn" (click)="updateContent()">
         Update
       </button>
     </ng-template>
 
-    <article class="parent-comment__vote">
-      <button>
-        <generic-icon [iconType]="'plus'"></generic-icon>
-      </button>
+    <votes [comment]="comment" [isYours]="isYours" class="parent-comment__votes"></votes>
 
-      <span>{{comment.score}}</span>
+    <actions [isYours]="isYours" (replyEmit)="openReply()" (toggleEditingEmit)="toggleEditing()"
+      (openModalEvent)="openModal()" class="parent-comment__actions"></actions>
 
-      <button>
-        <generic-icon [iconType]="'minus'"></generic-icon>
-      </button>
-    </article>
-
-    <div class="parent-comment__actions flex itm-center">
-      <article *ngIf="isYours" class="parent-comment__delete">
-        <button class="flex itm-center gap-8" (click)="deleteComment()">
-          <generic-icon [iconType]="'delete'"></generic-icon>
-          <span>Delete</span>
-        </button>
-      </article>
-
-      <article class="parent-comment__btn-blue" *ngIf="!isYours">
-        <button class="flex itm-center gap-8" (click)="openReply()">
-          <generic-icon [iconType]="'reply'"></generic-icon>
-          <span>Reply</span>
-        </button>
-      </article>
-
-      <article class="parent-comment__btn-blue" *ngIf="isYours">
-        <button class="flex itm-center gap-8" (click)="toggleEditing()">
-          <generic-icon [iconType]="'edit'"></generic-icon>
-          <span>Edit</span>
-        </button>
-      </article>
-    </div>
+    <modal *ngIf="modalOpen" [comment]="comment" [parentComment]="parentComment" (closeDialogEvent)="closeModal()">
+    </modal>
   </article>
 
-  <reply *ngIf="replyVisible" (closeReply)="closeReply()" [comment]="comment"></reply>
+  <reply *ngIf="replyVisible" (closeReply)="closeReply()" [comment]="comment">
+    Reply
+  </reply>
 
   <ul class="replies">
     <comments [parentComment]="comment" [comments]="comment.replies"></comments>

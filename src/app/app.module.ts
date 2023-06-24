@@ -8,6 +8,10 @@ import { GenericIconComponent } from './components/generic-icon/generic-icon.com
 import { CommentsComponent } from './components/comments/comments.component';
 import { ReplyComponent } from './components/reply/reply.component';
 import { AdjustSizeDirective } from './adjust-size.directive';
+import { VotesComponent } from './components/votes/votes.component';
+import { HeaderComponent } from './components/header/header.component';
+import { ActionsComponent } from './components/actions/actions.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import { AdjustSizeDirective } from './adjust-size.directive';
     CommentsComponent,
     ReplyComponent,
     AdjustSizeDirective,
+    VotesComponent,
+    HeaderComponent,
+    ActionsComponent,
+    ModalComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
