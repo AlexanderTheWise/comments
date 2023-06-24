@@ -31,8 +31,8 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/gigachad-comment-section-with-angular-HFVcFpGMce)
+- Live Site URL: [Live Site](https://comments-mentor.netlify.app/)
 
 ## My process
 
